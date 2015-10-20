@@ -1,0 +1,15 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="demo"
+     targetNamespace="http://example.bjwallen.com/Demo/Echo/demo"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+     xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+     xmlns:tns="http://example.bjwallen.com/Demo/Echo/demo"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="Demo">
+        <plnk:role name="DemoPortType" portType="tns:DemoPortType"/>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="http://example.bjwallen.com/Demo/Echo/demo" location="demo.wsdl"/>
+</wsdl:definitions>

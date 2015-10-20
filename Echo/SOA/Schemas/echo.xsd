@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://example.bjwallen.com"
+            targetNamespace="http://example.bjwallen.com"
+            elementFormDefault="qualified">
+    <xsd:element name="request" type="EchoComplexType" />
+    <xsd:element name="response" type="EchoComplexType" />
+    <xsd:complexType name="EchoComplexType">
+        <xsd:sequence>
+            <xsd:element name="echo" type="EchoSimpleType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="EchoSimpleType">
+        <xsd:restriction base="xsd:string"/>
+    </xsd:simpleType>
+</xsd:schema>

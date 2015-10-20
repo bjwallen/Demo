@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.bjwallen.example</groupId>
+    <artifactId>Demo</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <!-- Add project modules -->
+    	<module>Echo</module>
+    </modules>
+    <profiles>
+        <profile>
+            <id>ede</id>
+            <activation>
+                <property>
+                    <name>env</name>
+                    <value>ede</value>
+                </property>
+            </activation>
+            <distributionManagement>
+                <repository>
+                    <id>snapshots</id>
+                    <name>Snapshots Repository</name>
+                    <url>http://ci:8081/repository/snapshots</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+        <profile>
+            <id>ite</id>
+            <activation>
+                <property>
+                    <name>env</name>
+                    <value>ite</value>
+                </property>
+            </activation>
+            <distributionManagement>
+                <repository>
+                    <id>ite</id>
+                    <name>Integrated Test Repository</name>
+                    <url>http://ci:8081/repository/ite</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+        <profile>
+            <id>ivv</id>
+            <activation>
+                <property>
+                    <name>env</name>
+                    <value>ivv</value>
+                </property>
+            </activation>
+            <distributionManagement>
+                <repository>
+                    <id>ivv</id>
+                    <name>Independent Validation and Verification Repository</name>
+                    <url>http://ci:8081/repository/ivv</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+        <profile>
+            <id>prd</id>
+            <activation>
+                <property>
+                    <name>env</name>
+                    <value>prd</value>
+                </property>
+            </activation>
+            <distributionManagement>
+                <repository>
+                    <id>prd</id>
+                    <name>Production Repository</name>
+                    <url>http://ci:8081/repository/prd</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+    </profiles>
+    <scm>
+        <connection>scm:git://oracle@ci/ci/git/demo.git</connection>
+        <developerConnection>scm:git:[fetch=]ssh://oracle@ci/ci/git/demo.git[push=]ssh://oracle@ci/ci/git/demo.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+    <organization>
+        <name>BJWallen</name>
+        <url>http://www.bjwallen.com</url>
+    </organization>
+    <developers>
+        <developer>
+            <id>myid</id>
+            <name>Bill Wallen</name>
+            <email>bill@bjwallen.com</email>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
+</project>

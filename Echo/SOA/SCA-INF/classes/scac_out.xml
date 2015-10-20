@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line>31</line>
+      <col/>
+      <file>BPEL/EchoBPEL.bpel</file>
+      <name>BPEL/EchoBPEL.bpel</name>
+      <fix/>
+      <msg>Element not completed: 'sequence'</msg>
+   </Fault>
+</Faults>

@@ -1,0 +1,57 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Tue Oct 20 14:08:51 EDT 2015
+  Author:  bwallen
+  Type: BPEL 2.0 Process
+  Purpose: Empty BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="EchoBPEL"
+               targetNamespace="http://example.bjwallen.com/Demo/Echo/EchoBPEL"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://example.bjwallen.com/Demo/Echo/EchoBPEL"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://example.bjwallen.com/Demo/Echo/demo" xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:ess="http://xmlns.oracle.com/scheduler"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:ns2="http://example.bjwallen.com"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <partnerLinks>
+    <partnerLink name="Demo" partnerLinkType="ns1:Demo" myRole="DemoPortType"/>
+  </partnerLinks>
+  <variables>
+    <variable name="receive_echo_InputVariable" messageType="ns1:requestMessage"/>
+    <variable name="reply_echo_OutputVariable" messageType="ns1:replyMessage"/>
+  </variables>
+  <sequence name="main">
+    <receive name="receive" createInstance="yes" partnerLink="Demo" portType="ns1:DemoPortType" operation="echo"
+             variable="receive_echo_InputVariable"/>
+    <assign name="assignGreeting">
+      <copy>
+        <from>concat('Hello, ', $receive_echo_InputVariable.request/ns2:echo)</from>
+        <to>$reply_echo_OutputVariable</to>
+      </copy>
+    </assign>
+    <reply name="reply" variable="reply_echo_OutputVariable" partnerLink="Demo" portType="ns1:DemoPortType"
+           operation="echo"/>
+  </sequence>
+</process>
