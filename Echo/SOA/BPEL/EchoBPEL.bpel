@@ -26,7 +26,7 @@
          xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
          xmlns:ns2="http://example.bjwallen.com"
          xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
-         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap">
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xmlns:ui="http://xmlns.oracle.com/soa/designer">
 
   <!-- 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -35,6 +35,8 @@
      services integrated within this business process                  
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   -->
+  <import namespace="http://example.bjwallen.com/Demo/Echo/demo" location="../WSDLs/demoWrapper.wsdl"
+          importType="http://schemas.xmlsoap.org/wsdl/" ui:processWSDL="true"/>
   <partnerLinks>
     <partnerLink name="Demo" partnerLinkType="ns1:Demo" myRole="DemoPortType"/>
   </partnerLinks>
@@ -47,7 +49,7 @@
              variable="receive_echo_InputVariable"/>
     <assign name="assignGreeting">
       <copy>
-        <from>concat('Hello, ', $receive_echo_InputVariable.request/ns2:echo)</from>
+        <from>concat('Hello, ', $receive_echo_InputVariable.request/ns2:echo, '!')</from>
         <to>$reply_echo_OutputVariable</to>
       </copy>
     </assign>

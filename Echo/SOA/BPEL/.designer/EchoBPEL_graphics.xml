@@ -6,7 +6,7 @@
    <partnerlink_locations>
       <partnerlink name="Demo" x="15" y="187" side="left"/>
    </partnerlink_locations>
-   <graph_layout viewport="0,0,721,561" show_swimlanes="true">
+   <graph_layout viewport="0,0,725,561" show_swimlanes="true">
       <layout_item collapsed="false" xpath="/process" type="process" showhandlers="true"/>
       <layout_item collapsed="false" xpath="/process/sequence" type="sequence"/>
    </graph_layout>
